@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Einsendeaufgabe</title>
+</head>
+<body>
+<h2>Zaehler und aktuelle Uhrzeit:</h2>
+
+<form method="POST" action="/aufgabe1">
+    <input name="display_current_time" type="submit" value="Zeige Uhrzeit"/>
+    {{#current_time}}
+        <span aria-label="current_time">Uhrzeit: </span>
+        <time name="current_time">{{current_time}}</time>
+        <input name="previous_time_value" type="hidden" value="{{current_time}}"/>
+    {{/current_time}}
+
+    <input name="increment_counter" type="submit" value="Erhoehe Zaehler"/>
+    {{#counter_value}}
+        <span aria-label="counter_value">Zaehler: </span>
+        <span name="counter_value">{{counter_value}}</span>
+        <input name="previous_counter_value" type="hidden" value="{{counter_value}}"/>
+    {{/counter_value}}
+</form>
+
+<h2>Ip-Addressen der letzten 10 Besucher:</h2>
+<ul id="last-ip-addresses"></ul>
+
+<script type="text/javascript" src="/aufgabe2/events/client.js"></script>
+</body>
+</html>

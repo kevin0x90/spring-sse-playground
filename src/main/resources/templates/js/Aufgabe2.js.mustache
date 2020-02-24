@@ -1,0 +1,15 @@
+var counterValueElements = document.getElementsByName('{{FIELD_COUNTER_VALUE}}');
+var counterPreviousValueElements = document.getElementsByName('{{FIELD_PREVIOUS_COUNTER_VALUE}}');
+var updateCounterValue = function (event) {
+    var i;
+
+    for (i = 0; i < counterValueElements.length; ++i) {
+        counterValueElements[i].innerHTML = event.data;
+    }
+
+    for (i = 0; i < counterPreviousValueElements.length; ++i) {
+        counterPreviousValueElements[i].value = event.data;
+    }
+};
+
+eventSource.addEventListener('{{SSE_COUNTER_INCREASE_EVENT}}', updateCounterValue);

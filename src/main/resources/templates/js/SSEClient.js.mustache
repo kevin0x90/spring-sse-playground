@@ -1,0 +1,12 @@
+'use strict';
+
+(function() {
+    var eventSource = new EventSource('{{SSE_URL}}');
+
+    {{>js/Aufgabe2.js}}
+    {{>js/Aufgabe3.js}}
+
+    window.addEventListener('beforeunload', function () {
+        eventSource.close();
+    });
+})();

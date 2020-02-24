@@ -1,0 +1,18 @@
+var lastIpAddressesList = document.getElementById('last-ip-addresses');
+var updateLastIpList = function (event) {
+    var lastIps = JSON.parse(event.data);
+    var listFragment = document.createDocumentFragment();
+    var i;
+    var listElement;
+
+    for (i = 0; i < lastIps.length; ++i) {
+        listElement = document.createElement('li');
+        listElement.textContent = lastIps[i];
+        listFragment.appendChild(listElement);
+    }
+
+    lastIpAddressesList.innerHTML = '';
+    lastIpAddressesList.appendChild(listFragment);
+};
+
+eventSource.addEventListener('{{SSE_LAST_VISIT_IPS_EVENT}}', updateLastIpList);
